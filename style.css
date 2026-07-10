@@ -1,0 +1,293 @@
+/* ==========================================================================
+   Güven Halı Yıkama — design tokens
+   Palette grounded in Gaziantep: Antep fıstığı green (primary), warm wool
+   cream (paper), muted kilim clay (secondary), deep pine-water ink (dark).
+   Signature motif: a woven "iplik" (thread) divider, echoing carpet weft.
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,560;0,9..144,650;0,9..144,780;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap');
+
+:root{
+  --ink:#172420;
+  --ink-soft:#3c5049;
+  --ink-faint:#6f8279;
+  --paper:#f6f1e3;
+  --paper-deep:#ece2c8;
+  --paper-line:rgba(23,36,32,.14);
+  --pistachio:#8ca35f;
+  --pistachio-deep:#5c7a3f;
+  --pistachio-pale:#dfe7c9;
+  --clay:#b6603f;
+  --clay-deep:#8f4830;
+  --shadow:0 18px 40px -22px rgba(23,36,32,.35);
+  --radius:4px;
+  --maxw:1160px;
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;
+  background:var(--paper);
+  color:var(--ink-soft);
+  font-family:'Inter',system-ui,sans-serif;
+  font-size:16px;
+  line-height:1.6;
+  -webkit-font-smoothing:antialiased;
+}
+img{max-width:100%;display:block;}
+a{color:inherit;text-decoration:none;}
+h1,h2,h3,h4{
+  font-family:'Fraunces',serif;
+  color:var(--ink);
+  margin:0 0 .5em;
+  font-weight:650;
+  letter-spacing:-.01em;
+  line-height:1.12;
+}
+p{margin:0 0 1em;}
+.wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+.eyebrow{
+  font-family:'Inter',sans-serif;
+  font-weight:700;
+  font-size:.72rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  color:var(--pistachio-deep);
+  display:inline-flex;
+  align-items:center;
+  gap:.55em;
+  margin-bottom:1em;
+}
+.eyebrow::before{
+  content:"";
+  width:22px;height:1px;
+  background:var(--clay);
+}
+:focus-visible{outline:3px solid var(--clay);outline-offset:3px;}
+
+/* ---------- header ---------- */
+.site-header{
+  position:sticky;top:0;z-index:50;
+  background:rgba(246,241,227,.92);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--paper-line);
+}
+.site-header .wrap{
+  display:flex;align-items:center;justify-content:space-between;
+  height:82px;
+}
+.brand{display:flex;align-items:center;gap:12px;font-family:'Fraunces',serif;}
+.brand-mark{width:40px;height:40px;flex:none;}
+.brand-name{display:flex;flex-direction:column;line-height:1.15;}
+.brand-name strong{font-size:1.18rem;font-weight:700;color:var(--ink);letter-spacing:-.01em;}
+.brand-name span{font-size:.63rem;letter-spacing:.18em;text-transform:uppercase;color:var(--pistachio-deep);font-family:'Inter',sans-serif;font-weight:600;}
+
+.nav-list{display:flex;gap:2.1rem;list-style:none;margin:0;padding:0;}
+.nav-list a{
+  font-size:.93rem;font-weight:500;color:var(--ink-soft);
+  position:relative;padding:6px 0;
+}
+.nav-list a::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;height:2px;
+  background:var(--clay);transform:scaleX(0);transform-origin:left;
+  transition:transform .25s ease;
+}
+.nav-list a:hover::after,.nav-list a[aria-current="page"]::after{transform:scaleX(1);}
+.nav-list a[aria-current="page"]{color:var(--ink);font-weight:600;}
+
+.nav-cta{
+  display:inline-flex;align-items:center;gap:.5em;
+  background:var(--ink);color:var(--paper)!important;
+  padding:.7em 1.3em;border-radius:var(--radius);
+  font-size:.88rem;font-weight:600;
+  transition:background .2s ease;
+}
+.nav-cta:hover{background:var(--pistachio-deep);}
+
+.nav-toggle{display:none;background:none;border:0;cursor:pointer;padding:8px;}
+.nav-toggle span{display:block;width:24px;height:2px;background:var(--ink);margin:5px 0;transition:.25s;}
+
+/* ---------- thread divider (signature motif) ---------- */
+.thread{
+  width:100%;height:34px;display:block;
+  color:var(--pistachio);
+}
+.thread .t2{color:var(--clay);}
+.thread-flip{transform:scaleY(-1);}
+
+/* ---------- hero ---------- */
+.hero{
+  position:relative;
+  padding:5.2rem 0 4.4rem;
+  overflow:hidden;
+  background:
+    radial-gradient(560px 360px at 88% -10%, var(--pistachio-pale) 0%, transparent 70%);
+}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:3.5rem;align-items:center;}
+.hero h1{font-size:clamp(2.3rem,4vw,3.4rem);}
+.hero h1 em{font-style:italic;color:var(--pistachio-deep);}
+.hero-lede{font-size:1.08rem;max-width:46ch;color:var(--ink-soft);}
+.hero-actions{display:flex;gap:1rem;margin-top:1.8rem;flex-wrap:wrap;}
+.btn{
+  display:inline-flex;align-items:center;gap:.6em;
+  padding:.95em 1.7em;border-radius:var(--radius);
+  font-weight:600;font-size:.95rem;font-family:'Inter',sans-serif;
+  transition:transform .18s ease, box-shadow .18s ease, background .18s ease;
+  border:1px solid transparent;
+}
+.btn-primary{background:var(--clay);color:#fff;}
+.btn-primary:hover{background:var(--clay-deep);transform:translateY(-2px);box-shadow:var(--shadow);}
+.btn-ghost{background:transparent;border-color:var(--ink);color:var(--ink);}
+.btn-ghost:hover{background:var(--ink);color:var(--paper);}
+
+.hero-stats{display:flex;gap:2.2rem;margin-top:2.6rem;}
+.hero-stats div strong{display:block;font-family:'Fraunces',serif;font-size:1.9rem;color:var(--ink);}
+.hero-stats div span{font-size:.8rem;color:var(--ink-faint);}
+
+.hero-art{position:relative;}
+.hero-art svg{width:100%;height:auto;}
+
+/* ---------- sections ---------- */
+section{padding:4.6rem 0;}
+.section-alt{background:var(--paper-deep);}
+.section-head{max-width:640px;margin-bottom:2.6rem;}
+.section-head.center{margin-left:auto;margin-right:auto;text-align:center;}
+.lede{color:var(--ink-soft);font-size:1.03rem;}
+
+/* ---------- carpet type / service cards ---------- */
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:1.4rem;}
+.grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.6rem;}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:2.4rem;}
+
+.card{
+  background:var(--paper);border:1px solid var(--paper-line);
+  border-radius:var(--radius);padding:1.7rem 1.5rem;
+  transition:transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+.card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--pistachio);}
+.card .icon{width:42px;height:42px;color:var(--pistachio-deep);margin-bottom:1rem;}
+.card h3{font-size:1.1rem;margin-bottom:.4rem;}
+.card p{font-size:.92rem;color:var(--ink-faint);margin:0;}
+
+/* ---------- type detail blocks (halı türleri content) ---------- */
+.type-block{
+  display:grid;grid-template-columns:210px 1fr;gap:2.2rem;
+  padding:2.6rem 0;border-top:1px solid var(--paper-line);
+  align-items:start;
+}
+.type-block:first-of-type{border-top:none;}
+.type-index{
+  font-family:'Fraunces',serif;font-style:italic;font-size:1rem;
+  color:var(--pistachio-deep);display:flex;flex-direction:column;gap:.3rem;
+}
+.type-index .num{font-size:2.6rem;font-weight:400;line-height:1;color:var(--paper-deep);
+  -webkit-text-stroke:1.4px var(--pistachio);color:transparent;}
+.type-block h3{font-size:1.4rem;margin-bottom:.6rem;}
+.type-meta{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:1.1rem;}
+.tag{
+  font-size:.74rem;font-weight:600;letter-spacing:.04em;
+  padding:.4em .85em;border-radius:20px;
+  background:var(--pistachio-pale);color:var(--pistachio-deep);
+}
+.tag.clay{background:#f1ddd3;color:var(--clay-deep);}
+
+/* ---------- process steps ---------- */
+.process{display:grid;grid-template-columns:repeat(4,1fr);gap:1.6rem;counter-reset:step;}
+.step{position:relative;padding-top:2.6rem;}
+.step::before{
+  counter-increment:step;content:counter(step,decimal-leading-zero);
+  font-family:'Fraunces',serif;font-size:1.6rem;color:var(--clay);
+  position:absolute;top:0;left:0;
+}
+.step h4{font-size:1.02rem;margin-bottom:.35rem;}
+.step p{font-size:.88rem;color:var(--ink-faint);margin:0;}
+
+/* ---------- testimonials ---------- */
+.testi{
+  background:var(--ink);color:var(--paper);border-radius:var(--radius);
+  padding:2.2rem 2rem;position:relative;
+}
+.testi q{
+  display:block;font-family:'Fraunces',serif;font-style:italic;
+  font-size:1.12rem;line-height:1.5;color:#f2ecda;margin-bottom:1.4rem;
+}
+.testi .who{display:flex;align-items:center;gap:.7rem;font-size:.86rem;color:var(--pistachio-pale);}
+.testi .who strong{color:var(--paper);font-weight:600;display:block;}
+
+/* ---------- CTA band ---------- */
+.cta-band{
+  background:var(--pistachio-deep);color:#fff;border-radius:var(--radius);
+  padding:3rem 3rem;display:flex;align-items:center;justify-content:space-between;gap:2rem;
+  flex-wrap:wrap;
+}
+.cta-band h2{color:#fff;font-size:1.8rem;margin-bottom:.3rem;}
+.cta-band p{color:#e4ecd8;margin:0;}
+.cta-band .btn-primary{background:#fff;color:var(--pistachio-deep);}
+.cta-band .btn-primary:hover{background:var(--paper);}
+
+/* ---------- footer ---------- */
+.site-footer{background:var(--ink);color:#cfd8d2;padding:3.6rem 0 1.6rem;}
+.footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:2.4rem;padding-bottom:2.4rem;}
+.footer-grid h4{color:#fff;font-size:.95rem;font-family:'Inter',sans-serif;font-weight:600;margin-bottom:1rem;}
+.footer-grid a{display:block;font-size:.9rem;color:#a9b6ae;padding:.28em 0;}
+.footer-grid a:hover{color:#fff;}
+.footer-brand p{color:#a9b6ae;font-size:.9rem;max-width:32ch;}
+.footer-bottom{
+  border-top:1px solid rgba(255,255,255,.1);padding-top:1.4rem;
+  display:flex;justify-content:space-between;font-size:.8rem;color:#8a978f;flex-wrap:wrap;gap:.6rem;
+}
+
+/* ---------- contact page ---------- */
+.contact-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:3rem;align-items:start;}
+.contact-card{background:var(--paper);border:1px solid var(--paper-line);border-radius:var(--radius);padding:2rem;}
+.contact-row{display:flex;gap:1rem;padding:1rem 0;border-top:1px solid var(--paper-line);}
+.contact-row:first-child{border-top:none;padding-top:0;}
+.contact-row .icon{width:22px;height:22px;color:var(--clay);flex:none;margin-top:2px;}
+.contact-row strong{display:block;color:var(--ink);font-size:.95rem;}
+.contact-row span{font-size:.9rem;color:var(--ink-faint);}
+
+.form-field{margin-bottom:1.1rem;}
+.form-field label{display:block;font-size:.85rem;font-weight:600;color:var(--ink);margin-bottom:.4rem;}
+.form-field input,.form-field textarea,.form-field select{
+  width:100%;padding:.8em 1em;border:1px solid var(--paper-line);
+  border-radius:var(--radius);background:#fff;font-family:'Inter',sans-serif;font-size:.95rem;color:var(--ink);
+}
+.form-field textarea{resize:vertical;min-height:110px;}
+.form-field input:focus,.form-field textarea:focus,.form-field select:focus{
+  outline:none;border-color:var(--pistachio);box-shadow:0 0 0 3px var(--pistachio-pale);
+}
+
+/* ---------- about page ---------- */
+.value-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;}
+.timeline{border-left:2px solid var(--pistachio-pale);padding-left:1.8rem;display:flex;flex-direction:column;gap:2rem;}
+.timeline-item strong{display:block;color:var(--clay);font-size:.82rem;letter-spacing:.05em;text-transform:uppercase;margin-bottom:.3rem;}
+
+/* ---------- utility ---------- */
+.mt-0{margin-top:0;}
+.small{font-size:.85rem;color:var(--ink-faint);}
+
+/* ---------- responsive ---------- */
+@media (max-width:980px){
+  .hero .wrap{grid-template-columns:1fr;}
+  .hero-art{order:-1;}
+  .grid-4{grid-template-columns:repeat(2,1fr);}
+  .grid-3{grid-template-columns:1fr;}
+  .grid-2{grid-template-columns:1fr;}
+  .process{grid-template-columns:repeat(2,1fr);}
+  .footer-grid{grid-template-columns:1fr 1fr;}
+  .contact-grid{grid-template-columns:1fr;}
+  .value-grid{grid-template-columns:1fr;}
+}
+@media (max-width:760px){
+  .nav-list,.nav-cta{display:none;}
+  .nav-toggle{display:block;}
+  .site-header.open .nav-list{
+    display:flex;flex-direction:column;position:absolute;top:82px;left:0;right:0;
+    background:var(--paper);padding:1.2rem 28px 1.8rem;border-bottom:1px solid var(--paper-line);gap:1rem;
+  }
+  .site-header.open .nav-cta{display:inline-flex;margin:0 28px 1.4rem;}
+  .type-block{grid-template-columns:1fr;}
+  .cta-band{flex-direction:column;text-align:center;}
+  .footer-grid{grid-template-columns:1fr;}
+}
